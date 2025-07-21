@@ -14,9 +14,8 @@ import UserMenu from "@/components/user/UserMenu.vue";
 import FavoriteRecipe from "@/components/user/FavoriteRecipe.vue";
 import PersonalInfo from "@/components/user/PersonalInfo.vue";
 import UserRecipe from "@/components/user/UserRecipe.vue";
-
-import { useRoute } from "vue-router";
 import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
 
@@ -29,4 +28,5 @@ const component = {
 const getRoute = computed(() => {
   return route.params.component
 })
+
 </script>

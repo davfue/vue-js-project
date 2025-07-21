@@ -14,23 +14,23 @@
     "profile-menu": ProfileMenu,
  }
 
- const getToken = computed(() => {
+ const getToken = computed(() => {  
   return store.state.auth.token;
  });
 
- if (!getToken.value) {
-  menuComponent.value = "signup-menu";
- } else {
-  menuComponent.value = "profile-menu";
- }
-
- watch(getToken, (newValue, oldValue) => {
+ watch(getToken, (newValue, oldValue) => {  
   if (!newValue) {
     menuComponent.value = "signup-menu";
   } else {
     menuComponent.value = "profile-menu";
   }
  })
+
+ if (!getToken.value) {
+  menuComponent.value = "signup-menu";
+ } else {
+  menuComponent.value = "profile-menu";
+ }
 </script>
 
 <template>

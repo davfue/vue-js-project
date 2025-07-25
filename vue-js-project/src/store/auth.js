@@ -101,7 +101,8 @@ export default {
           expiresIn:
             new Date().getTime() + Number.parseInt(data.expiresIn) * 1000,
         });
-        await dispatch("getUser", data.loacalId);
+        
+        await dispatch("getUser", data.localId);
       } catch (err) {
         console.log(err);
       }
@@ -112,8 +113,9 @@ export default {
         const { data } = await axios.get(
           `https://vue-js-project-ff10c-default-rtdb.firebaseio.com/user.json`
         );
+        
         for (let key in data) {
-          if (data[key].userId === payload) {
+          if (data[key].userId === payload) {            
             Cookies.set("UID", data[key].userId);
             commit("setUserLogin", { userData: data[key], loginStatus: true });
           }

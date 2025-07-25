@@ -22,9 +22,11 @@
             class="form-control"
             placeholder="Your email address"
           />
+          <router-link to="/signup">
           <button type="button" class="btn btn-signup rounded-pill mt-4">
             Sign Up
           </button>
+          </router-link>
         </div>
         <p class="d-block d-sm-none pt-5 mb-0">ⓒ2022 Tasty Recipe, Inc</p>
       </div>

@@ -9,8 +9,8 @@
 
 <script setup>
 defineProps({
-  data:{ type: Array, require: true },
-  id:{ type: String, require: true },
-  modelValue:{ type: [String, Number] },
+  data: { type: Array, require: true },
+  id: { type: String, require: true },
+  modelValue: { type: [String, Number] },
 })
 </script>

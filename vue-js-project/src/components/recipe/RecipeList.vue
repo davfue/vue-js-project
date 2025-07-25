@@ -1,10 +1,10 @@
 <template>
   <div class="recipe__list-recipe row">
     <div v-for="recipe in recipes"
-      class="col-12 col-lg-3 col-sm-4 position-relative"
+      class="col-12 col-lg-3 col-sm-4 position-relative "
       style="padding-top: 12px; padding-bottom: 12px"
     >
-      <router-link :to="{ name: 'detailPage', params: { id: recipe.id }}">
+      <router-link :to="{ name: 'detailPage', params: { id: recipe.id }}" >
         <div class="card text-decoration-none" style="height: 398px">
           <img
             :src="recipe.imageLink"

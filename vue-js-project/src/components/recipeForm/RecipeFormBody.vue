@@ -7,26 +7,52 @@
         <div>
           <!-- Image Start -->
           <div class="mb-3">
-            <BaseInput type="file" identity="recipeImage" label="Photo Recipe" @input="checkImage"></BaseInput>
+            <BaseInput
+              type="file"
+              identity="recipeImage"
+              label="Choose Recipe Photo"
+              @input="checkImage"
+            ></BaseInput>
+            <div>
+              <img
+                :src="recipeData.imageLink"
+                :alt="recipeData.imageLink"
+                class="image"
+              />
+            </div>
           </div>
           <!-- Image End -->
 
           <!-- Recipe Title Start -->
           <div class="mb-3">
-            <BaseInput type="text" identity="recipeTitle" placeholder="Give your recipe a title" label="Recipe Title" v-model="recipeData.name"></BaseInput>
+            <BaseInput
+              type="text"
+              identity="recipeTitle"
+              placeholder="Give your recipe a title"
+              label="Recipe Title"
+              v-model="recipeData.name"
+            ></BaseInput>
           </div>
           <!-- Recipe Title  End -->
 
           <!-- Recipe Description Start -->
           <div class="mb-3">
-            <BaseTextArea identity="recipeDescription" label="Description" placeholder="Share story behind recipe and what is make it special" v-model="recipeData.description"></BaseTextArea>
+            <BaseTextArea
+              identity="recipeDescription"
+              label="Description"
+              placeholder="Share story behind recipe and what is make it special"
+              v-model="recipeData.description"
+            ></BaseTextArea>
           </div>
-          
+
           <!-- Recipe Description End -->
 
           <!-- Recipe Cateogry Start -->
           <div class="mb-3">
-            <BaseSelect :data="['Breakfast','Lunch', 'Dinner', 'Meals', 'Snacks']" v-model="recipeData.category"></BaseSelect>
+            <BaseSelect
+              :data="['Breakfast', 'Lunch', 'Dinner', 'Meals', 'Snacks']"
+              v-model="recipeData.category"
+            ></BaseSelect>
           </div>
           <!-- Recipe Category End -->
         </div>
@@ -39,19 +65,39 @@
         <div>
           <!-- Preparation Time Start -->
           <div class="mb-3">
-            <BaseInput type="number" identity="prepTime" placeholder="0" label="Prep Time" v-model="recipeData.prepTime"></BaseInput>
+            <BaseInput
+              type="number"
+              identity="prepTime"
+              placeholder="0"
+              label="Prep Time"
+              v-model="recipeData.prepTime"
+            ></BaseInput>
           </div>
           <!-- Preparation Time End -->
 
           <!-- Cook Time Start -->
           <div class="mb-3">
-            <BaseInput type="number" identity="cookTime" placeholder="0" label="Cook Time" v-model="recipeData.cookTime"></BaseInput>
+            <BaseInput
+              type="number"
+              identity="cookTime"
+              placeholder="0"
+              label="Cook Time"
+              v-model="recipeData.cookTime"
+            ></BaseInput>
           </div>
           <!-- Cook Time End -->
-          
+
           <!-- Total Time Start -->
           <div class="mb-3">
-            <BaseInput type="number" identity="totalTime" placeholder="0" label="Total Time" v-model="recipeData.totalTime" @totalTimeFocus="totalTime" readonly="1"></BaseInput>
+            <BaseInput
+              type="number"
+              identity="totalTime"
+              placeholder="0"
+              label="Total Time"
+              v-model="recipeData.totalTime"
+              @totalTimeFocus="totalTime"
+              readonly="1"
+            ></BaseInput>
           </div>
           <!-- Total Time End -->
         </div>
@@ -71,13 +117,19 @@
           <div class="mb-3 row" v-for="count in ingredientCount" :key="count">
             <!-- Ingredient Input Start -->
             <div class="col-lg-11 col-11">
-              <BaseInput type="text" identity="ingredient" placeholder="Ex: 1 cup sugar" v-model="recipeData.ingredients[count - 1]"></BaseInput>
+              <BaseInput
+                type="text"
+                identity="ingredient"
+                placeholder="Ex: 1 cup sugar"
+                v-model="recipeData.ingredients[count - 1]"
+              ></BaseInput>
             </div>
             <!-- Ingredient Input End -->
             <div
               class="col-lg-1 col-1 col-form-label align-self-end delete-ingredient"
               style="color: #cb3a31"
-              v-if="ingredientCount > 1" @click="deleteIngredient(count - 1)"
+              v-if="ingredientCount > 1"
+              @click="deleteIngredient(count - 1)"
             >
               <i class="fa-regular fa-trash-can px-1"></i
               ><span class="d-none d-md-inline">Delete</span>
@@ -85,7 +137,12 @@
           </div>
         </div>
         <!-- Add More Button Start -->
-        <BaseButton class="new-ingredient-btn px-3 py-2" type="button" @clickButton="addIngredient"><slot>Add More</slot></BaseButton>
+        <BaseButton
+          class="new-ingredient-btn px-3 py-2"
+          type="button"
+          @clickButton="addIngredient"
+          ><slot>Add More</slot></BaseButton
+        >
         <!-- Add More Button Start -->
       </div>
       <!-- Ingredients End -->
@@ -102,13 +159,19 @@
           <div class="mb-3 row" v-for="count in directionCount" :key="count">
             <!-- Direction Input Start -->
             <div class="col-lg-11 col-11">
-              <BaseInput type="text" identity="direction" placeholder="Ex: 1 cup sugar" v-model="recipeData.directions[count - 1]"></BaseInput>
+              <BaseInput
+                type="text"
+                identity="direction"
+                placeholder="Ex: 1 cup sugar"
+                v-model="recipeData.directions[count - 1]"
+              ></BaseInput>
             </div>
-             <!-- Direction Input End -->
+            <!-- Direction Input End -->
             <div
               class="col-lg-1 col-1 col-form-label align-self-end delete-ingredient"
               style="color: #cb3a31"
-              v-if="directionCount > 1" @click="deleteDirection(count - 1)"
+              v-if="directionCount > 1"
+              @click="deleteDirection(count - 1)"
             >
               <i class="fa-regular fa-trash-can px-1"></i
               ><span class="d-none d-md-inline">Delete</span>
@@ -116,7 +179,12 @@
           </div>
         </div>
         <!-- Add More Button Start -->
-        <BaseButton class="new-ingredient-btn px-3 py-2" type="button" @clickButton="addDirection"><slot>Add More</slot></BaseButton>
+        <BaseButton
+          class="new-ingredient-btn px-3 py-2"
+          type="button"
+          @clickButton="addDirection"
+          ><slot>Add More</slot></BaseButton
+        >
         <!-- Add More Button End -->
       </div>
       <!-- Direction End -->
@@ -124,11 +192,15 @@
       <!-- Form Button Start -->
       <div class="border-top py-3 d-flex my-4 justify-content-end">
         <!-- Cancel Button Start -->
-        <BaseButton class="cancel-btn px-3 py-2 ms-1"><slot>Cancel</slot></BaseButton>
+        <BaseButton class="cancel-btn px-3 py-2 ms-1"
+          ><slot>Cancel</slot></BaseButton
+        >
         <!-- Cancel Button End -->
 
         <!-- Submit Button Start -->
-        <BaseButton class="submit-recipe-btn px-3 py-2 ms-1"><slot>Submit</slot></BaseButton>
+        <BaseButton class="submit-recipe-btn px-3 py-2 ms-1"
+          ><slot>Submit</slot></BaseButton
+        >
         <!-- Submit Button End -->
       </div>
       <!-- Form Button End -->
@@ -141,9 +213,21 @@ import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseTextArea from "@/components/ui/BaseTextArea.vue";
 import BaseSelect from "@/components/ui/BaseSelect.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted } from "vue";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+
+const props = defineProps({
+  isEdit: { type: Boolean, default: false },
+});
+
+onMounted(() => {
+  if (props.isEdit) {    
+    recipeData.value = store.state.recipe.recipeDetail;    
+    ingredientCount.value = recipeData.value.ingredients.length;
+    directionCount.value = recipeData.value.directions.length;
+  }
+});
 
 const recipeData = reactive({
   imageLink: "",
@@ -155,7 +239,8 @@ const recipeData = reactive({
   totalTime: 0,
   ingredients: [],
   directions: [],
-})
+});
+
 
 const ingredientCount = ref(1);
 const directionCount = ref(1);
@@ -171,34 +256,47 @@ const addDirection = () => {
 const deleteIngredient = (index) => {
   recipeData.ingredients.splice(index, 1);
   ingredientCount.value--;
-}
+};
 
 const deleteDirection = (index) => {
   recipeData.directions.splice(index, 1);
   directionCount.value--;
-}
+};
 
 const totalTime = () => {
-  recipeData.totalTime = parseInt(recipeData.prepTime)
-    + parseInt(recipeData.cookTime);
-}
+  recipeData.totalTime =
+    parseInt(recipeData.prepTime) + parseInt(recipeData.cookTime);
+};
 
 const checkImage = (e) => {
-  const file= e.target.files[0];
+  const file = e.target.files[0];
   const reader = new FileReader();
-
   reader.readAsDataURL(file);
 
   reader.addEventListener("load", () => {
     recipeData.imageLink = reader.result;
   });
-}
+};
 
 const store = useStore();
+const route = useRoute();
 const router = useRouter();
 
+// const addNewRecipe = async () => {
+//   await store.dispatch("recipe/addNewRecipe", recipeData);
+//   router.push("/user/user-recipe");
+// };
+
 const addNewRecipe = async () => {
-  await store.dispatch("recipe/addNewRecipe", recipeData);
+  if (props.isEdit) {    
+    await store.dispatch("recipe/updateRecipe", {
+      id: route.params.id,
+      newRecipe: recipeData.value,
+    });
+  } else {    
+    await store.dispatch("recipe/addNewRecipe", recipeData);
+  }
   router.push("/user/user-recipe");
-}
+};
+
 </script>
